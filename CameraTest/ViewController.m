@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
+
 @end
 
 @implementation ViewController
@@ -32,10 +34,19 @@
 }
 
 - (void)showCameraRollScreen {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-    imagePickerController = nil;
+    
+    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:self.imagePicker animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark - Lazy Load
+
+-(UIImagePickerController *)imagePicker{
+    if(!_imagePicker){
+        _imagePicker = [[UIImagePickerController alloc]init];
+    }
+    return _imagePicker;
 }
 
 @end
