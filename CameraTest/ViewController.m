@@ -16,6 +16,9 @@
 
 @implementation ViewController
 
+#pragma mark -
+#pragma mark - View Lifecycke
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,9 +36,10 @@
     [self showCameraRollScreen];
 }
 
+#pragma mark -
+#pragma mark - Actions
+
 - (void)showCameraRollScreen {
-    
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:self.imagePicker animated:YES completion:nil];
 }
 
@@ -45,6 +49,7 @@
 -(UIImagePickerController *)imagePicker{
     if(!_imagePicker){
         _imagePicker = [[UIImagePickerController alloc]init];
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     return _imagePicker;
 }
