@@ -26,4 +26,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self showCameraRollScreen];
+}
+
+- (void)showCameraRollScreen {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+    imagePickerController = nil;
+}
+
 @end
